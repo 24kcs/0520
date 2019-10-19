@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>玉树临风美少年，揽镜自顾夜不眠 </title>
+
+</head>
+
+<body>
+
+ 
+  <script type="text/javascript">
+  // 实现every
+    Array.prototype.myEvery=function(cb){
+      for(let i=0;i<this.length;i++){
+        if(!cb(this[i],i)){
+          return false
+        }
+      }
+      return true
+    }
+    const result1=[10,20,30].myEvery((item,index)=>{
+      return item%2==0
+    })
+    console.log(result1)
+    // 实现filter
+    Array.prototype.myFilter=function(cb){
+      const arr=[]
+      for(let i=0;i<this.length;i++){
+        if(cb(this[i],i)){
+          arr.push(this[i])
+        }
+      }
+      return arr
+    }
+    const arr1=[10,20,30,40,50].myFilter((item,index)=>{
+      return item%2===0&&index%2===0
+    })
+    console.log(arr1)
+    // 实现find
+    Array.prototype.myFind=function(cb){
+      for(let i=0;i<this.length;i++){
+        if(cb(this[i],i)){
+          return this[i]
+        }
+      }
+      return
+    }
+    const result2=[10,20,30,40].myFind((item,index)=>{
+      return item>100
+    })
+    
+    console.log(result2)
+    // 实现map
+    Array.prototype.myMap=function(cb){
+      const arr=[]
+      for(let i=0;i<this.length;i++){
+        arr.push(cb(this[i],i))
+      }
+      return arr
+    }
+    const arr2=[10,20,30].myMap((item,index)=>{
+      return item*2
+    })
+    console.log(arr2)
+
+    // 实现reduce
+    Array.prototype.myReduce=function(cb,initVal){
+      let total=initVal
+      for(let i=0;i<this.length;i++){
+        total=cb(total,this[i],i)
+      }
+      return total
+    }
+    const result3=[0,1,2,3].myReduce((pre,item,index)=>{
+      if(index%2===1&&item%2===1){
+        pre+=item
+      }
+      return pre
+    },0)
+    console.log(result3)
+</script>
+</body>
+
+</html>
